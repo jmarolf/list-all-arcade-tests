@@ -1,4 +1,4 @@
-
+﻿
 using Microsoft.Build.Logging.StructuredLogger;
 
 if (args.Length != 1)
@@ -18,7 +18,7 @@ var testProjectPaths = build
     .FindChildrenRecursive<ProjectEvaluation>()
     .Where(
         project => project.FindChildrenRecursive<Property>(
-            property => property.Name == "IsTestProject" &&
+            property => property.Name == "IsUnitTestProject" &&
                         bool.TryParse(property.Value, out var value) && value).Any())
     .SelectMany(project =>
     {
