@@ -1,4 +1,4 @@
-﻿
+
 using Microsoft.Build.Logging.StructuredLogger;
 
 if (args.Length != 1)
@@ -29,6 +29,7 @@ var testProjectPaths = build
             ? targetFrameworks.Select(tfm => Path.Combine(outputPath, tfm, assemblyName + ".dll"))
             : (new[] { Path.Combine(outputPath, assemblyName + ".dll") });
     })
+    .Distinct()
     .ToArray();
 
 Console.WriteLine($"Found {testProjectPaths.Length} test projects");
